@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Code</title>
+    <style>
+        /* Styling for a modern, dark theme */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #1c1c1c;
+            color: #e0e0e0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #2e2e2e;
+            padding: 50px 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 26px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .code-input {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            background-color: #3e3e3e;
+            color: #ffffff;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-input:focus {
+            outline: none;
+            border: 2px solid #4caf50;
+            background-color: #444;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #43a047;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            display: none;
+            color: #ffffff;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-line;
+        }
+
+        .riddle {
+            font-style: italic;
+        }
+
+        .link {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #4caf50;
+            text-decoration: underline;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Enter the Secret Code</h2>
+    <div class="input-container">
+        <input type="text" maxlength="1" class="code-input" id="input1" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input2" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input3" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input4" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input5" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input6" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input7" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input8" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input9" oninput="forceUppercase(this)">
+        <input type="text" maxlength="1" class="code-input" id="input10" oninput="forceUppercase(this)">
+    </div>
+    <button onclick="checkCode()">Submit</button>
+    <div id="result">
+        <div class="riddle" id="riddle-text"></div>
+        <a href="#" target="_blank" id="link" class="link">Next step</a>
+    </div>
+</div>
+
+<script>
+    // Function to automatically convert input to uppercase
+    function forceUppercase(input) {
+        input.value = input.value.toUpperCase();
+    }
+
+    function checkCode() {
+        const correctCode = "HMKDIKRFAS"; // Replace this with the actual code
+        let userCode = "";
+
+        // Loop through each input and concatenate their values
+        for (let i = 1; i <= 10; i++) {
+            userCode += document.getElementById("input" + i).value.toUpperCase();
+        }
+
+        const resultDiv = document.getElementById("result");
+        const riddleText = document.getElementById("riddle-text");
+        
+        // Check if the entered code matches the correct code
+        if (userCode === correctCode) {
+            resultDiv.style.display = "block";
+            riddleText.innerHTML = "In the city’s heart, a pyramid stands,<br>" +
+                                   "Guiding travelers across distant lands.<br>" +
+                                   "A marker of miles, a stone so grand,<br>" +
+                                   "Find this monument where all roads expand.";
+            document.getElementById("link").href = "#";  // Replace "#" with your actual link
+        } else {
+            resultDiv.style.display = "block";
+            riddleText.innerHTML = "Incorrect code. Try again!";
+            document.getElementById("link").style.display = "none";  // Hide link on incorrect attempt
+        }
+    }
+</script>
+
+</body>
+</html>
