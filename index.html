@@ -35,11 +35,22 @@
         }
 
         .input-container {
-            display: flex;
-            flex-direction: column; /* Stack inputs vertically */
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
             gap: 15px;
             margin-bottom: 30px;
+            justify-items: center;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-label {
+            font-size: 18px;
+            color: #4caf50;
         }
 
         .code-input {
@@ -109,16 +120,46 @@
 <div class="container">
     <h2>Enter the Secret Code</h2>
     <div class="input-container">
-        <input type="text" maxlength="1" class="code-input" id="input1" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input2" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input3" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input4" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input5" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input6" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input7" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input8" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input9" oninput="forceUppercase(this)">
-        <input type="text" maxlength="1" class="code-input" id="input10" oninput="forceUppercase(this)">
+        <div class="input-group">
+            <span class="input-label">1</span>
+            <input type="text" maxlength="1" class="code-input" id="input1" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">2</span>
+            <input type="text" maxlength="1" class="code-input" id="input2" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">3</span>
+            <input type="text" maxlength="1" class="code-input" id="input3" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">4</span>
+            <input type="text" maxlength="1" class="code-input" id="input4" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">5</span>
+            <input type="text" maxlength="1" class="code-input" id="input5" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">6</span>
+            <input type="text" maxlength="1" class="code-input" id="input6" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">7</span>
+            <input type="text" maxlength="1" class="code-input" id="input7" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">8</span>
+            <input type="text" maxlength="1" class="code-input" id="input8" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">9</span>
+            <input type="text" maxlength="1" class="code-input" id="input9" oninput="forceUppercase(this)">
+        </div>
+        <div class="input-group">
+            <span class="input-label">10</span>
+            <input type="text" maxlength="1" class="code-input" id="input10" oninput="forceUppercase(this)">
+        </div>
     </div>
     <button onclick="checkCode()">Submit</button>
     <div id="result">
